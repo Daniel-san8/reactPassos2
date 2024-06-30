@@ -7,8 +7,8 @@ function App() {
   return (
     <div>
       <ButtonNotebook nomeNotebook="Notebook" />
-      <ButtonTablet nome="Tablet" />
-      <ButtonSmartPhone nome="SmartPhone" />
+      <ButtonTablet nomeTablet="Tablet" />
+      <ButtonSmartPhone nomeSmartPhone="SmartPhone" />
     </div>
   );
 }
