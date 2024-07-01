@@ -1,16 +1,18 @@
 import React from "react";
+import Button from "./Button";
 
 function App() {
-  const [contar, setContar] = React.useState(0);
-
-  React.useEffect(() => {
-    console.log("Executado");
-  });
+  async function functionButtonOk({ target }) {
+    const request = await fetch(
+      `https://ranekapi.origamid.dev/json/api/produto/${target.innerText}`
+    );
+    const requestResponse = await request.json();
+    console.log(requestResponse);
+  }
   return (
     <div>
-      <button onClick={() => setContar(contar + 1)}>
-        Clique aqui: {contar}
-      </button>
+      <Button functionButtonOk={functionButtonOk} texto="Smartphone" />
+      <Button functionButtonOk={functionButtonOk} texto="Notebook" />
     </div>
   );
 }
