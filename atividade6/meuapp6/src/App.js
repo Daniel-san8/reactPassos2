@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./Button";
 
-function App() {
+const App = () => {
   const [titleText, setTitleText] = React.useState(null);
   const [preco, setPreco] = React.useState(null);
 
@@ -22,7 +22,7 @@ function App() {
 
   React.useEffect(() => {
     async function pegarPreco() {
-      if (titleText) {
+      if (titleText)
         try {
           const request = await fetch(
             `https://ranekapi.origamid.dev/json/api/produto/${titleText}`
@@ -33,7 +33,6 @@ function App() {
         } catch (erro) {
           console.log(erro);
         }
-      }
     }
     pegarPreco();
   }, [titleText]);
@@ -49,6 +48,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
