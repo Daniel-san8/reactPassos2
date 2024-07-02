@@ -1,9 +1,13 @@
 import React from "react";
 import userContext from "./GlobalContext";
+import Produto from "./Produto";
 
 function App() {
-  console.log(userContext);
-  return <div></div>;
+  return (
+    <userContext.Provider value={{ nome: "Daniel" }}>
+      <Produto />
+    </userContext.Provider>
+  );
 }
 
 export default App;
