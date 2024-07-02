@@ -2,16 +2,12 @@ import React from "react";
 
 function App() {
   const [contar, setContar] = React.useState(0);
-  const valor = React.useMemo(() => {
-    const localItem = localStorage.getItem("Produto");
-    console.log("aconteceu");
-    return localItem;
+  const handleClick = React.useCallback(() => {
+    setContar((contar) => contar + 1);
   }, []);
-
-  console.log(valor);
   return (
     <div>
-      <button onClick={() => setContar(contar + 1)}>Total {contar}</button>
+      <button onClick={handleClick}>Total {contar}</button>
     </div>
   );
 }
