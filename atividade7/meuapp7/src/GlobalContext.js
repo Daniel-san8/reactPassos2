@@ -1,7 +1,5 @@
 import React from "react";
 
-const GlobalContext = () => {
-  const userContext = React.useContext();
-};
+const userContext = React.createContext();
 
-export default GlobalContext;
+export default userContext;
