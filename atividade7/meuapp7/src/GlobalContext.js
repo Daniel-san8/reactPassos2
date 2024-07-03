@@ -1,7 +1,11 @@
 import React from "react";
 
-export const userContext = React.createContext();
+export const GlobalContext = React.createContext();
 
-export const GlobalStorage = ({ children }) => {
-  return <userContext.Provider>{children}</userContext.Provider>;
+export const GlobalDadosApi = ({ children }) => {
+  return (
+    <GlobalContext.Provider value={{ daniel: "daniel" }}>
+      {children}
+    </GlobalContext.Provider>
+  );
 };

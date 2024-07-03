@@ -1,13 +1,13 @@
 import React from "react";
-import { GlobalStorage } from "./GlobalContext";
 import Produto from "./Produto";
+import { GlobalDadosApi } from "./GlobalContext";
 
-function App() {
+const App = () => {
   return (
-    <GlobalStorage>
+    <GlobalDadosApi>
       <Produto />
-    </GlobalStorage>
+    </GlobalDadosApi>
   );
-}
+};
 
 export default App;
