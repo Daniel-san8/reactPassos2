@@ -13,20 +13,20 @@ export const GlobalDadosApi = ({ children }) => {
         );
         const requisitionApiJson = await requisitionApi.json();
         setDados(() => requisitionApiJson);
-        console.log(dados);
       } catch (e) {
         console.log(Error(e));
       }
     };
-    if (!dados) requisition();
-  }, [dados]);
+
+    if (dados === null) requisition();
+  }, []);
 
   function limparDados() {
     setDados(null);
   }
 
   return (
-    <GlobalContext.Provider value={{ daniel: "daniel", dados, limparDados }}>
+    <GlobalContext.Provider value={{ dados, limparDados }}>
       {children}
     </GlobalContext.Provider>
   );
