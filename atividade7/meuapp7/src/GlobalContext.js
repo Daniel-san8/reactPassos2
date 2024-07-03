@@ -12,16 +12,21 @@ export const GlobalDadosApi = ({ children }) => {
           "https://ranekapi.origamid.dev/json/api/produto/"
         );
         const requisitionApiJson = await requisitionApi.json();
-        setDados((dados) => (dados = requisitionApiJson));
-      } catch {
-        console.log("err");
+        setDados(() => requisitionApiJson);
+        console.log(dados);
+      } catch (e) {
+        console.log(Error(e));
       }
-      requisition();
     };
-  }, []);
+    if (!dados) requisition();
+  }, [dados]);
+
+  function limparDados() {
+    setDados(null);
+  }
 
   return (
-    <GlobalContext.Provider value={{ daniel: "daniel", dados }}>
+    <GlobalContext.Provider value={{ daniel: "daniel", dados, limparDados }}>
       {children}
     </GlobalContext.Provider>
   );
