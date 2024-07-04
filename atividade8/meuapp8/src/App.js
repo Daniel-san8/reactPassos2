@@ -1,7 +1,13 @@
 import React from "react";
 
-function App() {
+const App = () => {
+  function useNumeroAleatorio() {
+    React.useEffect(() => {
+      document.title = Math.random();
+    }, []);
+  }
+  useNumeroAleatorio();
   return <div></div>;
-}
+};
 
 export default App;
