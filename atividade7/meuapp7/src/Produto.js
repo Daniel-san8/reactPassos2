@@ -20,9 +20,3 @@ const Produto = () => {
 };
 
 export default Produto;
-
-// <ul>
-//         {globalDados.dados.map((produto) => (
-//           <li key={produto.id}>{produto.nome}</li>
-//         ))}
-//       </ul>

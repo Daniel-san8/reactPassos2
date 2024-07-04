@@ -18,7 +18,7 @@ export const GlobalDadosApi = ({ children }) => {
       }
     };
 
-    if (dados === null) requisition();
+    if (!dados) requisition();
   }, []);
 
   function limparDados() {
