@@ -8,7 +8,6 @@ function App() {
     clearInterval(intervalo.current);
     intervalo.current = setInterval(() => {
       setLoading(null);
-      clearInterval(intervalo.current);
     }, 2000);
   }
 
