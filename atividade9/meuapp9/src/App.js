@@ -1,36 +1,103 @@
 import React from "react";
+import Estilo from "./App.css";
 
 function App() {
-  const [nome, setNome] = React.useState("");
-  const [email, setEmail] = React.useState("");
+  const [loading, setLoading] = React.useState(null);
+  const [form, setForm] = React.useState({
+    nome: "",
+    email: "",
+    senha: "",
+    cep: "",
+    rua: "",
+    numero: "",
+    bairro: "",
+    cidade: "",
+    estado: "",
+  });
+
+  function handleChange({ target }) {
+    setForm({ ...form, [target.id]: target.value });
+  }
+
+  function handleClick(evento) {
+    evento.preventDefault();
+    try {
+      const api = fetch("https://ranekapi.origamid.dev/json/api/usuario/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+      setLoading("Formulário Enviado");
+    } catch (error) {
+      console.log(error);
+      setLoading(null);
+    } finally {
+    }
+  }
+
+  React.useEffect(() => {}, [loading]);
   return (
     <div>
-      <form>
-        <label
-          style={{
-            fontSize: "2rem",
-          }}
-          htmlFor="nome"
-        >
-          Nome
-        </label>
-        <br />
+      <form style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <label htmlFor="nome">Nome:</label>
         <input
-          name="nome"
-          type="text"
           id="nome"
-          value={nome}
-          onChange={({ target }) => setNome(target.value)}
+          type="text"
+          value={form.nome}
+          onChange={handleChange}
         />
-        <label htmlFor="email"></label>
+        <label htmlFor="email">Email:</label>
         <input
-          name="email"
-          type="email"
           id="email"
-          value={email}
-          onChange={({ target }) => setEmail(target.value)}
+          type="email"
+          value={form.email}
+          onChange={handleChange}
         />
-        <button type="submit">Enviar</button>
+        <label htmlFor="senha">Senha:</label>
+        <input
+          id="senha"
+          type="password"
+          value={form.senha}
+          onChange={handleChange}
+        />
+        <label htmlFor="cep">CEP:</label>
+        <input id="cep" type="text" value={form.cep} onChange={handleChange} />
+        <label htmlFor="rua">rua:</label>
+        <input id="rua" type="text" value={form.rua} onChange={handleChange} />
+        <label htmlFor="numero">numero:</label>
+        <input
+          id="numero"
+          type="number"
+          value={form.numero}
+          onChange={handleChange}
+        />
+        <label htmlFor="bairro">bairro:</label>
+        <input
+          id="bairro"
+          type="text"
+          value={form.bairro}
+          onChange={handleChange}
+        />
+        <label htmlFor="cidade">cidade:</label>
+        <input
+          id="cidade"
+          type="text"
+          value={form.cidade}
+          onChange={handleChange}
+        />
+        <label htmlFor="estado">estado:</label>
+        <input
+          id="estado"
+          type="text"
+          value={form.estado}
+          onChange={handleChange}
+        />
+        {loading && <p>{loading}</p>}
+        <button onClick={handleClick} type="submit">
+          Enviar
+        </button>
       </form>
     </div>
   );
