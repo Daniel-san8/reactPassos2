@@ -2,8 +2,6 @@ import React from "react";
 import "./App.css";
 
 function App() {
-  const intervalo = React.useRef(retirada);
-
   function retirada() {
     clearInterval(intervalo.current);
     intervalo.current = setInterval(() => {
@@ -23,6 +21,7 @@ function App() {
     cidade: "",
     estado: "",
   });
+  const intervalo = React.useRef(retirada);
 
   function handleChange({ target }) {
     setForm({ ...form, [target.id]: target.value });
