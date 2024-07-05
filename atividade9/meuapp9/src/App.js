@@ -2,7 +2,7 @@ import React from "react";
 import Estilo from "./App.css";
 
 function App() {
-  const [loading, setLoading] = React.useState(null);
+  const [loading, setLoading] = React.useState("");
   const [form, setForm] = React.useState({
     nome: "",
     email: "",
@@ -19,25 +19,29 @@ function App() {
     setForm({ ...form, [target.id]: target.value });
   }
 
-  function handleClick(evento) {
+  async function handleClick(evento) {
     evento.preventDefault();
     try {
-      const api = fetch("https://ranekapi.origamid.dev/json/api/usuario/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
-      setLoading("Formulário Enviado");
+      const api = await fetch(
+        "https://ranekapi.origamid.dev/json/api/usuario/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        }
+      );
+      if (api.status === 403) {
+        setLoading("Formulário deu erro");
+      } else setLoading("Formulário Enviado");
     } catch (error) {
       console.log(error);
-      setLoading(null);
+      setLoading("Formulário deu erro");
     } finally {
     }
   }
 
-  React.useEffect(() => {}, [loading]);
   return (
     <div>
       <form style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
