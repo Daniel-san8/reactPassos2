@@ -1,7 +1,17 @@
 import React from "react";
-import Estilo from "./App.css";
+import "./App.css";
 
 function App() {
+  const intervalo = React.useRef(retirada);
+
+  function retirada() {
+    clearInterval(intervalo.current);
+    intervalo.current = setInterval(() => {
+      setLoading(null);
+      clearInterval(intervalo.current);
+    }, 2000);
+  }
+
   const [loading, setLoading] = React.useState("");
   const [form, setForm] = React.useState({
     nome: "",
@@ -39,6 +49,7 @@ function App() {
       console.log(error);
       setLoading("Formulário deu erro");
     } finally {
+      retirada();
     }
   }
 
