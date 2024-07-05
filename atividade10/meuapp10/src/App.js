@@ -7,7 +7,7 @@ function App() {
     <div>
       <form>
         {coresArray.map((cor) => (
-          <label key={cor}>
+          <label key={cor} style={{ textTransform: "capitalize" }}>
             {cor}
             <input
               type="checkbox"
