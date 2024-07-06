@@ -16,16 +16,14 @@ const App = () => {
   const [erro, setErro] = React.useState(null);
 
   function handleBlur({ target }) {
-    const regexCEP = /^\d{5}-?\d{3}$/;
-    const validation = regexCEP.test(target.value);
-    console.log(validation);
+    validateCep(target.value);
   }
 
   function validateCep(value) {
     if (value.length === 0) {
       setErro("preencha um valor");
       return false;
-    } else if (/^\d{5}-?\d{3}$/.test(value)) {
+    } else if (!/^\d{5}-?\d{3}$/.test(value)) {
       setErro("Preencha um CEP válido");
       return false;
     } else {
@@ -34,41 +32,48 @@ const App = () => {
     }
   }
 
+  function handleChange({ target }) {
+    if (erro) validateCep(target.value);
+    setVali(target.value);
+  }
+
+  function handleSubmit(evento) {
+    evento.preventDefault();
+    if (validateCep(vali)) {
+      console.log("Enviou");
+    } else {
+      console.log(" Não Enviou");
+    }
+  }
+
   return (
-    <form>
-      <Input value={nome} label="Nome" id="Nome" setValue={setNome} required />
-      <Input
-        value={email}
-        label="Email"
-        id="Email"
-        setValue={setEmail}
-        required
-      />
+    <form onSubmit={handleSubmit}>
+      <Input value={nome} label="Nome" id="Nome" onChange={setNome} />
+      <Input value={email} label="Email" id="Email" onChange={setEmail} />
       <Select
         options={["Smartphone", "Tablet Verde"]}
         value={produto}
-        setValue={setProduto}
+        onChange={setProduto}
       />
-      <Radio options={["Azul", "Vermelho"]} value={cor} setValue={setCor} />
+      <Radio options={["Azul", "Vermelho"]} value={cor} onChange={setCor} />
       <h2>Frutas:</h2>
       <Radio
         options={["Limão", "Goiaba", "Uva"]}
         value={frutas}
-        setValue={setFrutas}
+        onChange={setFrutas}
       />
       <h2>Checkbox</h2>
       <Checkbox
         options={["PHP", "JavaScript", "Ruby"]}
         value={linguagens}
-        setValue={setLinguagens}
+        onChange={setLinguagens}
       />
       <h2>Termos</h2>
       <Checkbox
         options={["Li e aceito os termos"]}
         value={termos}
-        setValue={setTermos}
+        onChange={setTermos}
       />
-      <button>Enviar</button>
 
       <h2>Validação</h2>
 
@@ -77,10 +82,12 @@ const App = () => {
         id="vali"
         name="vali"
         value={vali}
-        setValue={setVali}
         placeholder="00000-000"
         onBlur={handleBlur}
+        onChange={handleChange}
       />
+      {erro}
+      <button>Enviar</button>
     </form>
   );
 };
