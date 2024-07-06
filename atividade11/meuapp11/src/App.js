@@ -12,6 +12,27 @@ const App = () => {
   const [frutas, setFrutas] = React.useState("");
   const [linguagens, setLinguagens] = React.useState([]);
   const [termos, setTermos] = React.useState([]);
+  const [vali, setVali] = React.useState("");
+  const [erro, setErro] = React.useState(null);
+
+  function handleBlur({ target }) {
+    const regexCEP = /^\d{5}-?\d{3}$/;
+    const validation = regexCEP.test(target.value);
+    console.log(validation);
+  }
+
+  function validateCep(value) {
+    if (value.length === 0) {
+      setErro("preencha um valor");
+      return false;
+    } else if (/^\d{5}-?\d{3}$/.test(value)) {
+      setErro("Preencha um CEP válido");
+      return false;
+    } else {
+      setErro(null);
+      return true;
+    }
+  }
 
   return (
     <form>
@@ -48,6 +69,18 @@ const App = () => {
         setValue={setTermos}
       />
       <button>Enviar</button>
+
+      <h2>Validação</h2>
+
+      <Input
+        label="Validation"
+        id="vali"
+        name="vali"
+        value={vali}
+        setValue={setVali}
+        placeholder="00000-000"
+        onBlur={handleBlur}
+      />
     </form>
   );
 };
