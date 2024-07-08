@@ -3,6 +3,7 @@ import Input from "./Form/Input";
 import Select from "./Form/Select";
 import Radio from "./Form/Radio";
 import Checkbox from "./Form/Checkbox";
+import useForm from "./Hooks/useForm";
 
 const App = () => {
   const [nome, setNome] = React.useState("");
@@ -15,35 +16,12 @@ const App = () => {
   const [vali, setVali] = React.useState("");
   const [erro, setErro] = React.useState(null);
 
-  function handleBlur({ target }) {
-    validateCep(target.value);
-  }
-
-  function validateCep(value) {
-    if (value.length === 0) {
-      setErro("preencha um valor");
-      return false;
-    } else if (!/^\d{5}-?\d{3}$/.test(value)) {
-      setErro("Preencha um CEP válido");
-      return false;
-    } else {
-      setErro(null);
-      return true;
-    }
-  }
-
-  function handleChange({ target }) {
-    if (erro) validateCep(target.value);
-    setVali(target.value);
-  }
+  const cep = useForm("cep");
+  console.log(cep);
 
   function handleSubmit(evento) {
     evento.preventDefault();
-    if (validateCep(vali)) {
-      console.log("Enviou");
-    } else {
-      console.log(" Não Enviou");
-    }
+    console.log("Enviou");
   }
 
   return (
@@ -81,12 +59,10 @@ const App = () => {
         label="Validation"
         id="vali"
         name="vali"
-        value={vali}
         placeholder="00000-000"
-        onBlur={handleBlur}
-        onChange={handleChange}
+        {...cep}
       />
-      {erro}
+
       <button>Enviar</button>
     </form>
   );
