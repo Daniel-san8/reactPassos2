@@ -26,7 +26,7 @@ const App = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Input value={nome} label="Nome" id="Nome" onChange={setNome} />
+      <Input value={nome} label="Nome" id="Nome" onChange={setNome} required />
       <Input value={email} label="Email" id="Email" onChange={setEmail} />
       <Select
         options={["Smartphone", "Tablet Verde"]}
