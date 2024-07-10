@@ -12,3 +12,7 @@ empresas.map((empresa) => empresa.toLowerCase());
 const body = document.body;
 
 body.style.background = "black";
+
+const button = document.querySelector("button");
+
+button?.click();
