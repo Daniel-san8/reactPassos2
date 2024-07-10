@@ -5,6 +5,11 @@ const types = {
     regex: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@a-zA-Z0-9?(?:\\.a-zA-Z0-9?)*$/,
     message: "CEP Inválido!!",
   },
+
+  email: {
+    regex: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@a-zA-Z0-9?(?:\\.a-zA-Z0-9?)*$/,
+    message: "Email Inválido!!",
+  },
 };
 
 const useForm = (type) => {
