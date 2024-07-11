@@ -1,18 +1,21 @@
-const frase: string = "Front End";
-const total = 100.05;
-const empresas: string[] = ["Apple", "Microsoft"];
+function typescript1() {
+  const frase: string = "Front End";
+  const total = 100.05;
+  const empresas: string[] = ["Apple", "Microsoft"];
 
-// total.toLowerCase();
-frase.toLowerCase();
+  // total.toLowerCase();
+  frase.toLowerCase();
 
-total.toFixed(2);
+  total.toFixed(2);
 
-empresas.map((empresa) => empresa.toLowerCase());
+  empresas.map((empresa) => empresa.toLowerCase());
 
-const body = document.body;
+  const body = document.body;
 
-body.style.background = "black";
+  body.style.background = "black";
 
-const button = document.querySelector("button");
+  const button = document.querySelector("button");
 
-button?.click();
+  button?.click();
+}
+export { typescript1 };
