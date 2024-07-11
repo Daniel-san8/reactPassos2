@@ -5,3 +5,20 @@ function ola(frase: string) {
 }
 
 ola("oi");
+
+const biblioteca = [
+  {
+    nome: "A guerra dos tronos",
+    tipo: "livro",
+  },
+  {
+    nome: "Dark souls",
+    tipo: "jogo",
+  },
+];
+
+function filtrarLivros(dados: string[]) {
+  return biblioteca.filter((item) => {
+    item.tipo = "livro";
+  });
+}
