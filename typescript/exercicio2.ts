@@ -29,6 +29,7 @@ function showProduct(data: DataApi) {
   document.body.innerHTML = `
         <div>
             <h2>${data.empresaFabricante.pais}</h2>
+            <p>${data.garantia}</p>
         </div>
     `;
 }
