@@ -7,22 +7,20 @@ async function fetchProduto() {
 
 fetchProduto();
 
+interface Empresa {
+  nome: string;
+  fundacao: number;
+  pais: string;
+}
+
 interface DataApi {
   nome: string;
   preco: number;
   descricao: string;
   garantia: string;
   seguroAcidentes: boolean;
-  empresaFabricante: {
-    nome: string;
-    fundacao: number;
-    pais: string;
-  };
-  empresaMontadora: {
-    nome: string;
-    fundacao: number;
-    pais: string;
-  };
+  empresaFabricante: Empresa;
+  empresaMontadora: Empresa;
 }
 
 function showProduct(data: DataApi) {

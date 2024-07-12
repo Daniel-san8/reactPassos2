@@ -53,5 +53,5 @@ function fetchProduto() {
 }
 fetchProduto();
 function showProduct(data) {
-    document.body.innerHTML = "\n        <div>\n            <h2>".concat(data.empresaFabricante.pais, "</h2>\n        </div>\n    ");
+    document.body.innerHTML = "\n        <div>\n            <h2>".concat(data.empresaFabricante.pais, "</h2>\n            <p>").concat(data.garantia, "</p>\n        </div>\n    ");
 }
