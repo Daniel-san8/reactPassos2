@@ -8,20 +8,20 @@ async function fetchProduto() {
 fetchProduto();
 
 interface DataApi {
-  nome: "Notebook";
-  preco: 2000;
-  descricao: "Novo notebook com 128gb de memória ram.";
-  garantia: "3";
-  seguroAcidentes: true;
+  nome: string;
+  preco: number;
+  descricao: string;
+  garantia: string;
+  seguroAcidentes: boolean;
   empresaFabricante: {
-    nome: "Ranek";
-    fundacao: 1850;
-    pais: "Dinamarca";
+    nome: string;
+    fundacao: number;
+    pais: string;
   };
   empresaMontadora: {
-    nome: "Handel";
-    fundacao: 2000;
-    pais: "Polônia";
+    nome: string;
+    fundacao: number;
+    pais: string;
   };
 }
 
