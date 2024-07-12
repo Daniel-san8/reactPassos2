@@ -33,3 +33,11 @@ preencherDados({
   preco: 2599,
   teclado: true,
 });
+
+type Categorias = "design" | "codigo" | "descod";
+
+function pintarCategoria(categoria: Categorias) {
+  console.log(categoria);
+}
+
+pintarCategoria("descod");
