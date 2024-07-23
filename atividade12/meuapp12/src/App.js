@@ -4,6 +4,7 @@ import Home from "./Home";
 import Sobre from "./Sobre";
 import NaoEncontrada from "./NaoEncontrada";
 import Header from "./Header";
+import Login from "./Login";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="sobre" element={<Sobre />} />
+        <Route path="login" element={<Login />} />
         <Route path="*" element={<NaoEncontrada />} />
       </Routes>
     </BrowserRouter>
