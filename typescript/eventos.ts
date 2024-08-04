@@ -23,3 +23,5 @@ function ativarMenu(event: Event) {
 document.documentElement.addEventListener("mousedown", ativarMenu);
 document.documentElement.addEventListener("touchstart", ativarMenu);
 document.documentElement.addEventListener("keydown", ativarMenu);
+
+export {};
