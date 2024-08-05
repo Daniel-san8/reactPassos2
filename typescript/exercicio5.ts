@@ -35,3 +35,5 @@ function handleClick(event: PointerEvent) {
 }
 
 nav?.addEventListener("pointerdown", handleClick);
+
+export {};
