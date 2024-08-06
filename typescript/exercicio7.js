@@ -47,9 +47,10 @@ function consumirApi() {
                     json = _a.sent();
                     console.log(json);
                     if (json)
-                        json.map(function (item) {
-                            if (item.nome && item.horas && item.tags) {
-                                document.body.innerHTML += "\n            <p>".concat(item.nome, "</p>\n            <p>").concat(item.horas, "</p>\n            <p>").concat(item.tags.map(function (item) { return item; }).join(", "), "</p>\n        ");
+                        json.map(function (_a) {
+                            var nome = _a.nome, horas = _a.horas, tags = _a.tags;
+                            if (nome && horas && tags) {
+                                document.body.innerHTML += "\n            <p>".concat(nome, "</p>\n            <p>").concat(horas, "</p>\n            <p>").concat(tags.map(function (item) { return item; }).join(", "), "</p>\n        ");
                             }
                         });
                     return [2 /*return*/];

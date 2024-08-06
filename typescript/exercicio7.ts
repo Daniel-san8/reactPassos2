@@ -11,14 +11,13 @@ interface Api {
 async function consumirApi() {
   const chama = await fetch("https://api.origamid.dev/json/cursos.json");
   const json = await chama.json();
-  console.log(json);
   if (json)
-    json.map((item: Api) => {
-      if (item.nome && item.horas && item.tags) {
+    json.map(({ nome, horas, tags }: Api) => {
+      if (nome && horas && tags) {
         document.body.innerHTML += `
-            <p>${item.nome}</p>
-            <p>${item.horas}</p>
-            <p>${item.tags.map((item) => item).join(", ")}</p>
+            <p>${nome}</p>
+            <p>${horas}</p>
+            <p>${tags.map((item) => item).join(", ")}</p>
         `;
       }
     });
