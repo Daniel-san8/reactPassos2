@@ -6,8 +6,8 @@ function handleClick({
   pageX,
   target,
 }: {
-  pageX: PointerEvent;
-  target: EventTarget;
+  pageX: number;
+  target: HTMLElement;
 }) {
   console.log(pageX, target);
 }
