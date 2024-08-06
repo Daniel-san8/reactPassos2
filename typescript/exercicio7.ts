@@ -3,5 +3,14 @@ async function consumirApi() {
   const json = await chama.json();
   console.log(json);
 }
-consumirApi;
-export {};
+consumirApi();
+
+interface api {
+  aulas: number;
+  gratuito: boolean;
+  horas: number;
+  idAulas: Array<number>;
+  nivel: string;
+  nome: string;
+  tags: string[];
+}
