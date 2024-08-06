@@ -45,10 +45,11 @@ function consumirApi() {
                     return [4 /*yield*/, chama.json()];
                 case 2:
                     json = _a.sent();
+                    console.log(json);
                     if (json)
                         json.map(function (item) {
                             if (item.nome && item.horas && item.tags) {
-                                document.body.innerHTML += "\n            <p>".concat(item.nome, "</p>\n            <p>").concat(item.horas, "</p>\n            <p>").concat(item.tags.map(function (item) { return item; }), "</p>\n        ");
+                                document.body.innerHTML += "\n            <p>".concat(item.nome, "</p>\n            <p>").concat(item.horas, "</p>\n            <p>").concat(item.tags.map(function (item) { return item; }).join(", "), "</p>\n        ");
                             }
                         });
                     return [2 /*return*/];
