@@ -36,6 +36,7 @@ function carregaDados() {
     }
   });
 }
+
 carregaDados();
 
 formulario?.addEventListener("keyup", handleUp);
