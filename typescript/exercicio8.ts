@@ -33,6 +33,7 @@ function carregaDados() {
 
     if (input && valor) {
       input.value = valor;
+      console.log("deu certo");
     }
   });
 }
