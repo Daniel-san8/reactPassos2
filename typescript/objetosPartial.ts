@@ -34,3 +34,38 @@ function mostrarQuantidadePartial(produto: Partial<Produtooa>) {
 mostrarQuantidadePartial(produto1);
 mostrarQuantidadePartial(produto2);
 mostrarQuantidadePartial(servico1);
+
+interface Posta {
+  titulo: string;
+  visualizacoes: number;
+  tags: string[];
+  [key: string]: unknown;
+}
+
+const artigo: Posta = {
+  titulo: "Como aprender HTML",
+  visualizacoes: 3000,
+  tags: ["HTML", "Front End"],
+  autor: "Daniel San",
+};
+
+if (typeof artigo.autor === "string") {
+  artigo.autor.toUpperCase();
+}
+
+interface ObjetoLiteral {
+  [key: string]: unknown;
+}
+
+type ObjetoLiteral2 = Record<string, unknown>;
+
+function mostrarTitulo(obj: ObjetoLiteral2) {
+  if (obj && typeof obj === "object" && "titulo" in obj) {
+    console.log(obj.titulo);
+  }
+}
+
+// mostrarTitulo(200); SÓ PODE OBJETO LITERAL
+mostrarTitulo({
+  titulo: "HTML e CSS",
+});
