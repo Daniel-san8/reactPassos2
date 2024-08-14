@@ -2,6 +2,7 @@ const numeros = [10, 20, 30, 40, 50, 3];
 const valores = [10, 20, 30, 40, 50, 3, "produto", "taxas"];
 
 // function maiorQue10(data: Array<number>)
+//1256
 
 function maiorQue10(data: number[]) {
   return data.filter((n) => n > 10);
