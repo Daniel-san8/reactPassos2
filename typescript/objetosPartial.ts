@@ -26,3 +26,11 @@ function mostrarQuantidade(produto: Produtooa) {
 mostrarQuantidade(produto1);
 mostrarQuantidade(produto2);
 // mostrarQuantidade(servico1);
+
+function mostrarQuantidadePartial(produto: Partial<Produtooa>) {
+  if (produto.quantidade) console.log(produto.quantidade + 20);
+}
+
+mostrarQuantidadePartial(produto1);
+mostrarQuantidadePartial(produto2);
+mostrarQuantidadePartial(servico1);
