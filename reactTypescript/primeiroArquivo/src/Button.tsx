@@ -1,15 +1,19 @@
-import React, { ReactNode } from "react";
+import React from "react";
 
-type ButtonProps = {
+// type ButtonProps2 = React.PropsWithChildren & ButtonProps;
+type ButtonProps2 = React.PropsWithChildren<{
   tamanho?: string;
-  children?: ReactNode;
   onClick?: () => void;
+}>;
+
+type ButtonProps = React.ComponentProps<"button"> & {
+  tamanho?: string;
 };
 
-const Button = (props: ButtonProps) => {
+const Button = ({ tamanho, children, ...props }: ButtonProps) => {
   return (
-    <button onClick={props.onClick} style={{ fontSize: props.tamanho }}>
-      {props.children}
+    <button {...props} style={{ fontSize: tamanho }}>
+      {children}
     </button>
   );
 };

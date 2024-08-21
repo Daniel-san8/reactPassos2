@@ -11,7 +11,9 @@ function App() {
     <>
       <button onClick={incrementar}>{total}</button>
       {/* <Button tamanho="3rem" /> */}
-      <Button onClick={incrementar}>Incrementar 2</Button>
+      <Button id="principal" className="classeButton" onClick={incrementar}>
+        Incrementar 2
+      </Button>
     </>
   );
 }
