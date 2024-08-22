@@ -3,23 +3,21 @@ import Input from "./Input";
 import { ApiData } from "./Input";
 
 function App() {
-  const [data, setData] = React.useState(null);
+  const [data, setData] = React.useState<ApiData[] | null>(null);
   const [inicio, setInicio] = React.useState("");
   const [final, setFinal] = React.useState("");
   const inicioRef = React.useRef(null);
   const finalRef = React.useRef(null);
+  const api = `https://data.origamid.dev/vendas/?inicio=${inicio}&final=${final}`;
 
   React.useEffect(() => {
-    const api = `https://data.origamid.dev/vendas/?inicio=${inicio}&${final}=${final}`;
-
-    async function fetchApi(api: string): Promise<ApiData[]> {
-      const apiResponse = await fetch(api);
-      const json = await apiResponse.json();
-      setData(json);
-      console.log(data);
-      return json;
-    }
     if (inicio && final) {
+      async function fetchApi(api: string): Promise<ApiData[]> {
+        const apiResponse = await fetch(api);
+        const json = await apiResponse.json();
+        setData(json);
+        return json;
+      }
       fetchApi(api);
     }
   }, [inicio, final]);
@@ -58,6 +56,17 @@ function App() {
         value={final}
         onChange={() => handleChange(finalRef, "final")}
       />
+
+      {data &&
+        data.map((dados) => {
+          return (
+            <ul key={dados.id}>
+              <li>
+                {dados.nome}: {dados.status}
+              </li>
+            </ul>
+          );
+        })}
     </>
   );
 }
