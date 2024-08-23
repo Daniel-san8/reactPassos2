@@ -10,17 +10,15 @@ interface Data {
   id: string;
   nome: string;
   preco: number;
-  quantidade: number;
+  quantidade?: number;
   descricao: string;
   internacional: boolean;
 }
 
-const useFetch = (url: string, options?: RequestInit): FetchState<Data> => {
-  const [state, setState] = React.useState<FetchState<Data>>({
-    data: null,
-    loading: false,
-    error: null,
-  });
+const useFetch = (url: string, options?: RequestInit) => {
+  const [data, setData] = React.useState<Data | null>(null);
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState<Error | null>(null);
 
   React.useEffect(() => {
     const abortApi = new AbortController();
@@ -28,7 +26,8 @@ const useFetch = (url: string, options?: RequestInit): FetchState<Data> => {
 
     async function chamadaApi() {
       try {
-        setState({ data: null, loading: true, error: null });
+        setData(null);
+        setLoading(true);
 
         const fetchApi = await fetch(url, {
           ...options,
@@ -40,15 +39,19 @@ const useFetch = (url: string, options?: RequestInit): FetchState<Data> => {
         }
 
         const json = (await fetchApi.json()) as Data;
-        if (!signal.aborted)
-          setState({ data: json, loading: false, error: null });
+        if (!signal.aborted) {
+          setData(json);
+          setLoading(true);
+        }
       } catch (error) {
         if (
           !signal.aborted &&
           error instanceof Error &&
           error.name !== "AbortError"
         ) {
-          setState({ data: null, loading: false, error: error.message });
+          setData(null);
+          setLoading(false);
+          setError(error);
         }
       }
     }
@@ -60,7 +63,7 @@ const useFetch = (url: string, options?: RequestInit): FetchState<Data> => {
     };
   }, [url]);
 
-  return state;
+  return { data, loading, error };
 };
 
 export default useFetch;
