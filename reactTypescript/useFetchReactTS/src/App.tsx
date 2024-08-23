@@ -2,9 +2,9 @@ import React from "react";
 import useFetch from "./useFetch";
 
 function App() {
+  const [id, setId] = React.useState("p001");
   const produtos = useFetch("https://data.origamid.dev/produtos");
-  const produto = useFetch("https://data.origamid.dev/produtos/p001");
-  console.log(produtos);
+  const produto = useFetch(`https://data.origamid.dev/produtos/${id}`);
   return (
     <>
       <div
@@ -18,7 +18,9 @@ function App() {
         {produtos.data &&
           Array.isArray(produtos.data) &&
           produtos.data.map((dados) => (
-            <button key={dados.id}>{dados.id}</button>
+            <button onClick={() => setId(dados.id)} key={dados.id}>
+              {dados.id}
+            </button>
           ))}
       </div>
       <div>
