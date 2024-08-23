@@ -15,10 +15,10 @@ interface Data {
   internacional: boolean;
 }
 
-const useFetch = (url: string, options: RequestInit): FetchState<Data> => {
+const useFetch = (url: string, options?: RequestInit): FetchState<Data> => {
   const [state, setState] = React.useState<FetchState<Data>>({
     data: null,
-    loading: true,
+    loading: false,
     error: null,
   });
 
@@ -40,10 +40,14 @@ const useFetch = (url: string, options: RequestInit): FetchState<Data> => {
         }
 
         const json = (await fetchApi.json()) as Data;
-        setState({ data: json, loading: false, error: null });
-        console.log(json);
+        if (!signal.aborted)
+          setState({ data: json, loading: false, error: null });
       } catch (error) {
-        if (error instanceof Error && error.name !== "AbortError") {
+        if (
+          !signal.aborted &&
+          error instanceof Error &&
+          error.name !== "AbortError"
+        ) {
           setState({ data: null, loading: false, error: error.message });
         }
       }
