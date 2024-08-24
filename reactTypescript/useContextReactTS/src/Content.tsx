@@ -2,7 +2,8 @@ import React from "react";
 import { useUi } from "./Context";
 
 const Content = () => {
-  const { dark } = useUi();
+  const { dark, dadosApi } = useUi();
+  console.log(dadosApi);
   return <p>{dark ? "dark" : "light"}</p>;
 };
 
