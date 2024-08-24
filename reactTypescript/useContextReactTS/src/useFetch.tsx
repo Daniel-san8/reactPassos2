@@ -1,19 +1,19 @@
 import React from "react";
 
-interface FetchState<T> {
-  data: T | null;
-  loading: boolean;
-  error: string | null;
-}
+// interface FetchState<T> {
+//   data: T | null;
+//   loading: boolean;
+//   error: string | null;
+// }
 
-interface Data {
-  id: string;
-  nome: string;
-  preco: number;
-  quantidade?: number;
-  descricao: string;
-  internacional: boolean;
-}
+// interface Data {
+//   id: string;
+//   nome: string;
+//   preco: number;
+//   quantidade?: number;
+//   descricao: string;
+//   internacional: boolean;
+// }
 
 const useFetch = <T,>(url: string, options?: RequestInit) => {
   const [data, setData] = React.useState<T | null>(null);
