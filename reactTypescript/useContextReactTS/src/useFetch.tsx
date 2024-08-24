@@ -17,7 +17,7 @@ import React from "react";
 
 const useFetch = <T,>(url: string, options?: RequestInit) => {
   const [data, setData] = React.useState<T | null>(null);
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<Error | null>(null);
 
   React.useEffect(() => {
@@ -27,7 +27,7 @@ const useFetch = <T,>(url: string, options?: RequestInit) => {
     async function chamadaApi() {
       try {
         setData(null);
-        setLoading(true);
+        setLoading(false);
 
         const fetchApi = await fetch(url, {
           ...options,
@@ -41,7 +41,7 @@ const useFetch = <T,>(url: string, options?: RequestInit) => {
         const json = (await fetchApi.json()) as T;
         if (!signal.aborted) {
           setData(json);
-          setLoading(true);
+          setLoading(false);
         }
       } catch (error) {
         if (
@@ -50,7 +50,7 @@ const useFetch = <T,>(url: string, options?: RequestInit) => {
           error.name !== "AbortError"
         ) {
           setData(null);
-          setLoading(false);
+          setLoading(true);
           setError(error);
         }
       }
