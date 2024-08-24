@@ -3,15 +3,17 @@ import { useUi } from "./Context";
 
 const Content = () => {
   const { dark, dadosApi } = useUi();
-  console.log(dadosApi);
+  if (dadosApi.data === null) return null;
+  const { playback, qualidade, volume } = dadosApi.data.preferencias;
+
   return (
     <div>
       <p>{dark ? "dark" : "light"}</p>
       {dadosApi && (
         <p>
-          Preferências: {dadosApi.data?.preferencias.playback},{" Qualidade:"}
-          {dadosApi.data?.preferencias.qualidade},{" Volume:"}
-          {dadosApi.data?.preferencias.volume}
+          Preferências: {playback},{" Qualidade:"}
+          {qualidade},{" Volume:"}
+          {volume}
         </p>
       )}
     </div>
