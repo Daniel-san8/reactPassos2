@@ -26,7 +26,15 @@ const Form = () => {
   React.useEffect(() => {
     dispatch({ type: "setName", payload: "marina@gmail.com" });
   }, []);
-  return <form></form>;
+  return (
+    <form>
+      {state && (
+        <p>
+          {state.email} ½ {state.nome}
+        </p>
+      )}
+    </form>
+  );
 };
 
 export default Form;
