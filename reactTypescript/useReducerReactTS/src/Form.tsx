@@ -21,6 +21,8 @@ function reducer(state: State, action: Action) {
   };
 }
 
+//dispatch é o nome da função que vai mudar o objeto
+
 const Form = () => {
   const [state, dispatch] = React.useReducer(reducer, { nome: "", email: "" });
   React.useEffect(() => {
