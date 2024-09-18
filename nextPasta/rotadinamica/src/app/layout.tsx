@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Rotas dinâmicas",
@@ -12,7 +13,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body>{children}</body>
+      <body>
+        <Link href="/">Home</Link>
+        <Link href="/produtos">Produtos</Link>
+        {children}
+      </body>
     </html>
   );
 }
