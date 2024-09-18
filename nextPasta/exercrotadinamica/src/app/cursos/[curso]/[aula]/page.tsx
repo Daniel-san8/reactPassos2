@@ -26,8 +26,8 @@ export default async function PageAula({ params }: IParams) {
       <h1>Essa é a aula: {aula.nome}</h1>
       <ul>
         <li>Descrição: {aula.descricao}</li>
-        <li>tempo: {aula.tempo}</li>
-        <li>ordem: {aula.ordem}</li>
+        <li>Tempo: {aula.tempo}</li>
+        <li>Ordem: {aula.ordem}</li>
       </ul>
     </div>
   );
