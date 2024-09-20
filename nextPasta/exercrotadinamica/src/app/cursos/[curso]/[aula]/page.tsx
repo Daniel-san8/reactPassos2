@@ -14,7 +14,7 @@ type Aula = {
   tempo: number;
   ordem: number;
 };
-
+// ultima rota
 export default async function PageAula({ params }: IParams) {
   const response = await fetch(
     `https://api.origamid.online/cursos/${params.curso}/${params.aula}`
