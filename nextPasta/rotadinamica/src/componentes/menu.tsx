@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+//menu no next
 export default function Menu() {
   return (
     <ul>
