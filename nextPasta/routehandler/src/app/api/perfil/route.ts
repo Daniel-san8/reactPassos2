@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { NextRequest } from "next/server";
 
 export async function GET() {
   const token = cookies().get("token");
@@ -12,4 +13,11 @@ export async function GET() {
   const data = await response.json();
 
   return Response.json(data);
+}
+
+export async function POST(request: NextRequest) {
+  const param = request.nextUrl.searchParams.get("busca");
+
+  const body = await request.json();
+  return Response.json({ body });
 }
