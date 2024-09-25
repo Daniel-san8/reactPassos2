@@ -19,5 +19,5 @@ export async function POST(request: NextRequest) {
   const param = request.nextUrl.searchParams.get("busca");
 
   const body = await request.json();
-  return Response.json({ body });
+  return Response.json({ param });
 }
