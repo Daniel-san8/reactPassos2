@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
       "Content-Type": "application/json",
     },
 
-    body: JSON.stringify(body),
+    body: JSON.stringify({ username: body.username, password: body.senha }),
   });
   console.log(response.ok);
   if (!response.ok) {

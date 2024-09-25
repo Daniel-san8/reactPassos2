@@ -7,7 +7,6 @@ export default function Home() {
     event.preventDefault();
     const username = event.currentTarget.login.value;
     const senha = event.currentTarget.senha.value;
-
     const response = await fetch("/api/login", {
       method: "POST",
       headers: {
@@ -16,8 +15,8 @@ export default function Home() {
 
       body: JSON.stringify({ username, senha }),
     });
-
-    console.log(response);
+    const json = await response.json();
+    console.log(json);
   }
 
   return (
