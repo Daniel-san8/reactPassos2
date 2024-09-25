@@ -2,6 +2,9 @@
 
 import { setCookie } from "@/actions/set-cookie";
 import { FormEvent } from "react";
+// para revalidar o cache por tempo
+
+// export const revalidate = 5;
 
 export default function Home() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
