@@ -1,5 +1,6 @@
 "use client";
 
+import { setCookie } from "@/actions/set-cookie";
 import { FormEvent } from "react";
 
 export default function Home() {
@@ -15,13 +16,15 @@ export default function Home() {
 
       body: JSON.stringify({ username, senha }),
     });
-    const json = await response.json();
-    console.log(json);
+  }
+
+  function testarServerAction() {
+    setCookie("Chave", "testedocookie");
   }
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={testarServerAction}>
         <label htmlFor="login">Login:</label>
         <input type="text" id="login" />
 
