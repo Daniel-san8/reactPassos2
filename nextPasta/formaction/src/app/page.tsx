@@ -1,4 +1,16 @@
+"use client";
+
 import { metodoForm } from "@/metodos/metodoForm";
+import { useFormStatus } from "react-dom";
+
+function Button() {
+  const status = useFormStatus();
+  return (
+    <button type="submit" disabled={status.pending}>
+      Adicionar
+    </button>
+  );
+}
 
 export default function Home() {
   return (
@@ -9,7 +21,7 @@ export default function Home() {
       <input type="password" id="senha" name="senha" />
       <label htmlFor="outroCampo">outro Campo</label>
       <input type="text" id="outroCampo" name="outroCampo" />
-      <button>Enviar</button>
+      <Button />
     </form>
   );
 }
