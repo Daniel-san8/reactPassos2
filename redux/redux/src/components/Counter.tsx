@@ -7,9 +7,9 @@ export default function Counter() {
   const dispatch = useDispatch<AppDispatch>();
   return (
     <div>
-      <h1>Count: {count}</h1>
-      <button onClick={() => dispatch(incremento())}>Increment</button>
-      <button onClick={() => dispatch(decremento())}>Decrement</button>
+      <h1>Contador: {count}</h1>
+      <button onClick={() => dispatch(incremento())}>Incremento</button>
+      <button onClick={() => dispatch(decremento())}>Decremento</button>
     </div>
   );
 }
