@@ -1,6 +1,6 @@
 'use client';
 
-import { redirect, useParams } from 'next/navigation';
+import { redirect } from 'next/navigation';
 
 export default function Interaction() {
   function mostrarParams() {
